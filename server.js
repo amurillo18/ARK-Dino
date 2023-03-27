@@ -11,7 +11,7 @@ app.use(morgan('dev'))
 app.use(express.static(path.join(__dirname, "client", "build")))
 
 mongoose.set('strictQuery', true)
-mongoose.connect("mongodb+srv://Amurillo:Alex2015@cluster0.uvmcw4x.mongodb.net/ARKdb?retryWrites=true&w=majority", () => console.log('connected to database'))
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
 app.use('/dinos', require('./routes/dinos'))
 
